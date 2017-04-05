@@ -13,6 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
+var forms_1 = require("@angular/forms");
 var game_component_1 = require("./components/game.component");
 var AppModule = (function () {
     function AppModule() {
@@ -22,7 +23,7 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         declarations: [game_component_1.GameComponent],
-        imports: [platform_browser_1.BrowserModule, http_1.HttpModule],
+        imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule],
         providers: [],
         bootstrap: [game_component_1.GameComponent]
     })

@@ -5,11 +5,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms'
 import { GameComponent } from './components/game.component';
 
 @NgModule ({
     declarations: [ GameComponent ],
-    imports: [ BrowserModule, HttpModule ],
+    imports: [ BrowserModule, HttpModule, FormsModule ],
     providers: [],
     bootstrap: [ GameComponent ]
 })

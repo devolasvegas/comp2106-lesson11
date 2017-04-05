@@ -24,6 +24,27 @@ var GameService = (function () {
     GameService.prototype.getGames = function () {
         return this.http.get('/api').map(function (response) { return response.json(); });
     };
+    // add game
+    GameService.prototype.addGame = function (newGame) {
+        // set up a header to specify json content type
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('/api', JSON.stringify(newGame), { headers: headers }).map(function (response) { response.json(); });
+    };
+    // delete game
+    GameService.prototype.deleteGame = function (_id) {
+        return this.http.delete('/api/' + _id).map(function (response) {
+            response.json();
+        });
+    };
+    // update game
+    GameService.prototype.updateGame = function (game) {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.put('/api/' + game._id, JSON.stringify(game), { headers: headers }).map(function (response) {
+            response.json();
+        });
+    };
     return GameService;
 }());
 GameService = __decorate([

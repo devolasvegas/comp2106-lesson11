@@ -25,6 +25,60 @@ var GameComponent = (function () {
         this.gameService.getGames().subscribe(function (response) { _this.games = response; });
     };
     ;
+    // add games
+    GameComponent.prototype.addGame = function () {
+        var _this = this;
+        var newGame = {
+            title: this.title,
+            developer: this.developer,
+            genre: this.genre,
+            year: this.year
+        };
+        this.gameService.addGame(newGame).subscribe(function (response) {
+            _this.getGames();
+            _this.clearForm();
+        });
+    };
+    // clear form
+    GameComponent.prototype.clearForm = function () {
+        this._id = null;
+        this.title = null;
+        this.developer = null;
+        this.genre = null;
+        this.year = null;
+    };
+    //delete
+    GameComponent.prototype.deleteGame = function (_id) {
+        var _this = this;
+        if (confirm('Are you sure?')) {
+            this.gameService.deleteGame(_id).subscribe(function (response) {
+                _this.getGames();
+            });
+        }
+    };
+    // select
+    GameComponent.prototype.selectGame = function (game) {
+        this._id = game._id;
+        this.title = game.title;
+        this.developer = game.developer;
+        this.genre = game.genre;
+        this.year = game.year;
+    };
+    // update
+    GameComponent.prototype.updateGame = function () {
+        var _this = this;
+        var game = {
+            _id: this._id,
+            title: this.title,
+            developer: this.developer,
+            genre: this.genre,
+            year: this.year
+        };
+        this.gameService.updateGame(game).subscribe(function (response) {
+            _this.getGames();
+            _this.clearForm();
+        });
+    };
     return GameComponent;
 }());
 GameComponent = __decorate([
